@@ -43,15 +43,15 @@ names(subject_test) <- "subject"
 ## Bind the X_tests data (only mean and std measurements) with the subject and activity name
 test <- cbind(subject_test, Y_test, X_test[,features_meanstd])
 
-## Merge the 'training' and 'test' data sets, write result to a csv file
+## Merge the 'training' and 'test' data sets, write result to a txt file
 merged <- rbind(training, test)
-write.csv(merged, file = "merged.csv")
+write.table(merged, file = "merged.txt", row.names = FALSE)
 
 ## Reshape the data set in order to perform calculations for each subject/activityname combination
 ids <- c("subject", "activity", "activityname")
 measures <- setdiff(names(merged),ids)
 melted <- melt(merged, id = ids, measure.vars = measures)
 
-## Calcuate the mean of each measurement, per subject/activityname
+## Calcuate the mean of each measurement, per subject/activityname, write to a txt file
 means <- dcast(melted, subject + activityname ~ variable, mean)
-write.csv(means, file = "means.csv")
+write.table(means, file = "means.txt", row.names = FALSE)
