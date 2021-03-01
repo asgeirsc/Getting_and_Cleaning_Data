@@ -1,4 +1,4 @@
-# Getting and CleaningData
+# Getting and Cleaning Data
 Getting and Cleaning Data | Week 4 Peer-Reviewed Assignment
 
 ## Peer-Reviewed Assignment
